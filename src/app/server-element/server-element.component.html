@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="card mt-3">
+      <div class="card-header">
+        {{ element.name }}
+      </div>
+      <div class="card-body">
+        <blockquote class="blockquote mb-0">
+          <p>
+            <strong *ngIf="element.type === 'server'" style="color: red;">{{
+              element.content
+            }}</strong>
+            <em *ngIf="element.type === 'blueprint'" style="color: blue;">{{
+              element.content
+            }}</em>
+          </p>
+        </blockquote>
+      </div>
+    </div>
+  </div>
+</div>

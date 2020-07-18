@@ -1,28 +1,33 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
+  encapsulation: ViewEncapsulation.Emulated, // None , Native
 })
 export class AppComponent {
   title = 'angular-databinding';
-  serverElements = [];
-  newServerName = '';
-  newServerContent = '';
+  serverElements = [
+    { type: 'server', name: 'TestServer', content: 'Just a Test!!' },
+  ];
 
-  onAddServer() {
+  onServerAdded(serverData: { serverName: string; serverContent: string }) {
     this.serverElements.push({
-      name: this.newServerName,
-      content: this.newServerContent,
+      type: 'server',
+      name: serverData.serverName,
+      content: serverData.serverContent,
     });
   }
 
-  onAddBlueprint() {
+  onBlueprintAdded(blueprintData: {
+    serverName: string;
+    serverContent: string;
+  }) {
     this.serverElements.push({
       type: 'blueprint',
-      name: this.newServerName,
-      content: this.newServerContent,
+      name: blueprintData.serverName,
+      content: blueprintData.serverContent,
     });
   }
 }
