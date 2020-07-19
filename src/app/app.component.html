@@ -6,17 +6,35 @@
 
   <hr />
 
-  <app-server-element
-    *ngFor="let serverElements of serverElements"
-    [srvElements]="serverElements"
-  >
-    <p>
-      <strong *ngIf="serverElements.type === 'server'" style="color: red;">{{
-        serverElements.content
-      }}</strong>
-      <em *ngIf="serverElements.type === 'blueprint'" style="color: blue;">{{
-        serverElements.content
-      }}</em>
-    </p></app-server-element
-  >
+  <div class="row">
+    <div class="col-sm-12">
+      <button class="btn btn-primary mr-3" (click)="onChangeFirst()">
+        Change First Element
+      </button>
+
+      <button class="btn btn-danger" (click)="onDestroyFirst()">
+        Destroy First Component
+      </button>
+
+      <app-server-element
+        *ngFor="let serverElements of serverElements"
+        [name]="serverElements.name"
+      >
+        <!-- [srvElements]="serverElements" === 
+        [name]="serverElements.name" -->
+        <p>
+          <strong
+            *ngIf="serverElements.type === 'server'"
+            style="color: red;"
+            >{{ serverElements.content }}</strong
+          >
+          <em
+            *ngIf="serverElements.type === 'blueprint'"
+            style="color: blue;"
+            >{{ serverElements.content }}</em
+          >
+        </p></app-server-element
+      >
+    </div>
+  </div>
 </div>
