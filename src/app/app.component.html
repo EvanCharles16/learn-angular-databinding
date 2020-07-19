@@ -9,5 +9,14 @@
   <app-server-element
     *ngFor="let serverElements of serverElements"
     [srvElements]="serverElements"
-  ></app-server-element>
+  >
+    <p>
+      <strong *ngIf="serverElements.type === 'server'" style="color: red;">{{
+        serverElements.content
+      }}</strong>
+      <em *ngIf="serverElements.type === 'blueprint'" style="color: blue;">{{
+        serverElements.content
+      }}</em>
+    </p></app-server-element
+  >
 </div>
