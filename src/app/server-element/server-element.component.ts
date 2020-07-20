@@ -9,6 +9,9 @@ import {
   AfterContentChecked,
   AfterViewInit,
   OnDestroy,
+  ViewChild,
+  ElementRef,
+  ContentChild,
 } from '@angular/core';
 
 @Component({
@@ -32,6 +35,8 @@ export class ServerElementComponent
     content: string;
   };
   @Input() name: string;
+  @ViewChild('heading') header: ElementRef;
+  @ContentChild('contentParagprah') paragraph: ElementRef;
 
   constructor() {
     console.log('constructor called !');
@@ -44,6 +49,12 @@ export class ServerElementComponent
 
   ngOnInit(): void {
     console.log('ngOnInit called !');
+    console.log('Text content : ' + this.header.nativeElement.textContent); //Undefined
+    console.log(
+      'Text content of Paragraph : ' + this.paragraph.nativeElement.textContent
+    ); //Undefined
+
+    // Testing
   }
 
   ngDoCheck() {
@@ -54,6 +65,10 @@ export class ServerElementComponent
     console.log('ngAfterContentInit called !');
     // Called after DoCheck and it called once , cant be multiple because it doesn't get initialized again.
     // Content is the thing we projected into this through ng-content
+    console.log(
+      'Text content of Paragraph : ' + this.paragraph.nativeElement.textContent
+    );
+    // Testing
   }
 
   ngAfterContentChecked() {
@@ -63,7 +78,9 @@ export class ServerElementComponent
 
   ngAfterViewInit() {
     console.log('ngAfterViewInit called !');
+    console.log('Text content : ' + this.header.nativeElement.textContent);
     // Called after AfterContentChecked
+    // Testing
   }
 
   ngAfterViewChecked() {

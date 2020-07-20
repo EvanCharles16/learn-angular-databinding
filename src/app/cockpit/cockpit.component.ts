@@ -26,6 +26,7 @@ export class CockpitComponent implements OnInit {
   // newServerName = '';
   // newServerContent = '';
   @ViewChild('serverContentInput') serverContentInput: ElementRef;
+  // ViewChild which we can use here to access to element from our while DOM our template
 
   constructor() {}
 
